@@ -21,7 +21,7 @@ pipeline {
 
       steps {
         sh 'cd cypress; npm install'
-        sh 'npm run ci:e2e'
+        sh 'cd cypress; npm run ci:e2e'
       }
     }
   }
