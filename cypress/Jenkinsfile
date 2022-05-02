@@ -5,8 +5,8 @@ pipeline {
     // it can load the record key variable from credentials store
     // see https://jenkins.io/doc/book/using/using-credentials/
     // https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#handling-credentials
-    SAUCE_USERNAME = ${env.SAUCE_USERNAME_KEY_SECRET}
-    SAUCE_ACCESS_KEY = ${env.SAUCE_ACCESS_KEY_SECRET}
+    SAUCE_USERNAME = "${env.SAUCE_USERNAME_KEY_SECRET}"
+    SAUCE_ACCESS_KEY = "${env.SAUCE_ACCESS_KEY_SECRET}"
   }
 
   stages {
