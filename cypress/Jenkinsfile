@@ -7,20 +7,18 @@ pipeline {
   }
 
   stages {
-    // first stage installs node dependencies and Cypress binary
-    stage('build') {
-      steps {
-        // there a few default environment variables on Jenkins
-        // on local Jenkins machine (assuming port 8080) see
-        // http://localhost:8080/pipeline-syntax/globals#env
+    stage('build and test') {
+      environment {
+        // we will be recording test results and video on Cypress dashboard
+        // to record we need to set an environment variable
+        // we can load the record key variable from credentials store
+        // see https://jenkins.io/doc/book/using/using-credentials/
         echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
+      }
+
+      steps {
         sh 'npm run ci:e2e'
       }
-    }
-
-  post {
-    always {
-      echo 'Finished'
     }
   }
 }
