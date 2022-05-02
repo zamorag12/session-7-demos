@@ -14,8 +14,8 @@ pipeline {
       steps {
         // This step trigger the test
         echo 'Run Sauce Cypress Pipeline Test'
-        sh 'npm install saucectl'
-        sh 'npx saucectl run'
+        sh 'cd cypress; npm install saucectl'
+        sh 'cd cypress; npx saucectl run'
       }
     }
   }
