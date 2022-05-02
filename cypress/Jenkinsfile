@@ -5,6 +5,9 @@ pipeline {
       image 'cypress/base:10'
     }
   }
+  environment {
+    HOME = '.'
+  }
 
   stages {
     stage('build and test') {
