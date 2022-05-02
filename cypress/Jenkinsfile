@@ -1,27 +1,21 @@
 pipeline {
-  agent {
-    // this image provides everything needed to run Cypress
-    docker {
-      image 'cypress/base:10'
-    }
-  }
+  agent any
+
   environment {
-    HOME = '.'
+    // it can load the record key variable from credentials store
+    // see https://jenkins.io/doc/book/using/using-credentials/
+    // https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#handling-credentials
+    SAUCE_USERNAME = credentials('sauce-username')
+    SAUCE_ACCESS_KEY = credentials('sauce-access-key')
   }
 
   stages {
-    stage('build and test') {
-      // environment {
-      //   // we will be recording test results and video on Cypress dashboard
-      //   // to record we need to set an environment variable
-      //   // we can load the record key variable from credentials store
-      //   // see https://jenkins.io/doc/book/using/using-credentials/
-      //   echo "Running build ..."
-      // }
-
+    stage('run') {
       steps {
-        sh 'cd cypress; npm install'
-        sh 'cd cypress; npm run ci:e2e'
+        // This step trigger the test
+        echo 'Run Sauce Cypress Pipeline Test'
+        sh 'npm install saucectl'
+        sh 'npx saucectl run'
       }
     }
   }
