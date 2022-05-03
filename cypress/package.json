@@ -5,8 +5,7 @@
   "scripts": {
     "test": "cypress run",
     "cypress:open": "cypress open",
-    "cy:run": "cypress/node_modules/.bin/cypress run",
-    "ci:e2e": "start-server-and-test start http://localhost:3000 cy:run"
+    "cy:run": "cypress/node_modules/.bin/cypress run"
   },
   "devDependencies": {
     "@bahmutov/print-env": "1.2.0",
@@ -18,11 +17,9 @@
     "eslint-plugin-json-format": "2.0.1",
     "eslint-plugin-mocha": "^10.0.3",
     "https-proxy-agent": "^5.0.0",
-    "lambdatest-cypress-cli": "^2.4.7",
     "mochawesome": "^7.0.1",
     "mochawesome-merge": "^4.2.0",
     "mochawesome-report-generator": "^6.0.1",
-    "start-server-and-test": "^1.14.0",
     "yaml-lint": "1.2.4"
   },
   "engines": {
